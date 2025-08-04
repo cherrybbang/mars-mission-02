@@ -3,7 +3,7 @@ import itertools
 import string
 
 # zip 파일 경로
-zip_file_path = 'Q1/door_hacking.zip'
+zip_file_path = 'Q1/emergency_storage_key.zip'
 
 characters = string.ascii_lowercase + string.digits
 min_length = 6
