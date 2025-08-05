@@ -1,39 +1,34 @@
+import random
 import zipfile
-import itertools
-import string
+import time
 
-# zip 파일 경로
-zip_file_path = 'Q1/emergency_storage_key.zip'
+start_time = time.time()
+attempt_count = 0
 
-characters = string.ascii_lowercase + string.digits
-min_length = 6
-max_length = 6
+while True:
+  set = 'abcdefghijklmnopqrstuvwxyz0123456789'
+  zfile = zipfile.ZipFile('emergency_storage_key.zip', 'r')
+  paw = ''
 
-def unlock_zip(zip_file, password):
-    try:
-        zip_file.extractall(pwd=password.encode('utf-8'))
-        print(f'비밀번호를 찾았습니다! : {password}')
-        
-        # 비밀번호를 password.txt 파일에 저장
-        with open('password.txt', 'w') as f:
-            f.write(password)
-        print(f'비밀번호가 password.txt 파일에 저장되었습니다.')
-        
-        return True
-    except:
-        return False
-    
-with zipfile.ZipFile(zip_file_path) as zf:
-    found = False
-    for length in range(min_length, max_length + 1):
-        for attempt in itertools.product(characters, repeat=length):
-            password = ''.join(attempt)
-            print(f'시도 중인 숫자 : {password}')
-            if unlock_zip(zf, password):
-                found = True
-                break
-        if found:
-            break
-    
-    else:
-        print('비밀번호를 찾지 못했습니다ㅠㅠ')
+  for i in range(0,6):
+    paw += random.choice(set)
+
+    attempt_count += 1
+    print(f"시도 #{attempt_count}: {paw} 테스트 중...")
+
+    if zfile:
+      try:
+        zfile.extractall(path='.', pwd=str(paw).encode('utf-8'))
+        end_time = time.time()
+        print(f'비밀번호는 {paw} 입니다!')
+        print(f'시작시간 : {start_time}')
+        print(f'소요시간 : {end_time - start_time}')
+
+        with open('password.txt', 'w', encoding='utf-8') as f:
+            f.write(f'비밀번호: {paw}\n')
+
+        print('비밀번호가 password.txt 파일에 저장되었습니다.')
+        break
+      
+      except:
+        pass
