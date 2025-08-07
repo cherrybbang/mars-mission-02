@@ -6,7 +6,7 @@ from PyQt5.QtWidgets import QApplication, QWidget, QGridLayout, QPushButton, QLi
 from PyQt5.QtCore import Qt
 
 # Qt platform plugins 경로 명시적으로 지정
-plugin_path = r'C:\Users\paint\개인\sny\mars-mission-02\venv\Lib\site-packages\PyQt5\Qt5\plugins\platforms'
+plugin_path = os.path.join(os.path.dirname(QtCore.__file__), 'Qt5', 'plugins', 'platforms')
 os.environ['QT_QPA_PLATFORM_PLUGIN_PATH'] = plugin_path
 
 
