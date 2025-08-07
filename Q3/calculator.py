@@ -5,7 +5,7 @@ from PyQt5 import QtCore
 from PyQt5.QtWidgets import QApplication, QWidget, QGridLayout, QPushButton, QLineEdit, QVBoxLayout
 from PyQt5.QtCore import Qt
 
-# Qt platform plugins 경로 명시적으로 지정
+# Qt platform plugins 경로 지정 -> 개인마다 저장되는 경로가 다를 수 있기에 확인해보고 설정하기!!!
 plugin_path = os.path.join(os.path.dirname(QtCore.__file__), 'Qt5', 'plugins', 'platforms')
 os.environ['QT_QPA_PLATFORM_PLUGIN_PATH'] = plugin_path
 
