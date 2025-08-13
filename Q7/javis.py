@@ -19,7 +19,7 @@ class VoiceRecorder:
         self.is_recording = False
         self.frames = []
         
-        # records 폴더 생성 - Q7 폴더 안에 생성되도록 수정
+        # records 폴더 생성 - Q7 폴더 안에 생성
         current_dir = os.path.dirname(os.path.abspath(__file__))
         self.records_dir = os.path.join(current_dir, "records")
         if not os.path.exists(self.records_dir):
