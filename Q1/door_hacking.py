@@ -52,3 +52,7 @@ with zipfile.ZipFile(zip_file_path) as zf:
         print(f'종료 시간: {datetime.now().strftime("%Y-%m-%d %H:%M:%S")}')
     else:
         print('비밀번호를 찾지 못했습니다ㅠㅠ')
+
+
+
+# 브루트포스 공격 : 가능한 모든 비밀번호 조합을 하나씩 시도하여 올바른 비밀번호를 찾아내는 방식
